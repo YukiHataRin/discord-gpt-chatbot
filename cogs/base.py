@@ -32,11 +32,9 @@ class Base(commands.Cog):
 
             while i < len(msg):
                 if len(msg) - i <= 500:
-                    print(msg[i:], end='\n==============\n')
                     await message.reply(msg[i:])
 
                 else:
-                    print(msg[i:i + 500], end='\n==============\n')
                     await message.reply(msg[i:i + 500])
                 
                 i += 500
