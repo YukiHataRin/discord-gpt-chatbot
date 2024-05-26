@@ -14,10 +14,32 @@ class Base(commands.Cog):
             return
 
         if message.guild == None:
-            await message.reply(self.chatbot.chat(message.content, message.author.name, message.author.id))
+            msg = self.chatbot.chat(message.content, message.author.name, message.author.id)
+            i = 0
+
+            while i < len(msg):
+                if len(msg) - i <= 500:
+                    await message.channel.send(msg[i:])
+
+                else:
+                    await message.channel.send(msg[i:i + 500])
+                
+                i += 500
 
         elif message.content.startswith("$"):
-            await message.reply(self.chatbot.chat(message.content[1:], message.author.name, message.author.id))
+            msg = self.chatbot.chat(message.content[1:], message.author.name, message.author.id)
+            i = 0
+
+            while i < len(msg):
+                if len(msg) - i <= 500:
+                    print(msg[i:], end='\n==============\n')
+                    await message.reply(msg[i:])
+
+                else:
+                    print(msg[i:i + 500], end='\n==============\n')
+                    await message.reply(msg[i:i + 500])
+                
+                i += 500
 
     @app_commands.command(name="prompt", description="更新提示詞")
     @app_commands.describe(new_prompt = "輸入提示詞")
