@@ -15,7 +15,7 @@
 1. 克隆這個專案到本地：
     ```bash
     git clone https://github.com/YukiHataRin/discord-gpt-chatbot.git
-    cd discord-chatbot
+    cd discord-gpt-chatbot
     ```
 
 2. 安裝所需的模組：
